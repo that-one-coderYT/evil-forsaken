@@ -2,7 +2,7 @@ local Players = game:GetService("Players")
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Test",
+   Name = "Evil Forsaken",
    Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "Rayfield Interface Suite",
    LoadingSubtitle = "by Sirius",
@@ -54,21 +54,18 @@ local Slider = Tab:CreateSlider({
    Callback = function(Values)
 	local player = Players.LocalPlayer
     local Survivors = workspace:WaitForChild("Players"):WaitForChild("Survivors"):GetChildren()
-	for _, survivor in pairs(Survivors) do
-		  if survivor:getAttribute("Username") == player.Name then
-			local speed = survivor:WaitForChild("SpeedMultipliers")
-			 if speed:WaitForChild("SpeedStatus") then
-          			speed:WaitForChild("SpeedStatus").Value = Values
-			else
-				local SpeedStatus = Instance.new("NumberValue")
-			SpeedStatus.Name = "SpeedStatus"
-			SpeedStatus.Value = Values
-			SpeedStatus.Parent = speed 
-			end
-			
+	for _, Survivors in pairs(Survivors) do
+		  if Survivors:getAttribute("Username") == player.Name then
+			local speed = Survivors:WaitForChild("SpeedMultipliers")
+			 speed:WaitForChild("Sprinting").Value = Values
+		 
+		  end
 		  end
 		
 
    end
-   end
+   
 })
+
+
+local Tab = Window:CreateTab("Visual", 4483362458) -- Title, Image
