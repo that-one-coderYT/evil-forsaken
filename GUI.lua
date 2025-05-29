@@ -78,7 +78,7 @@ local Toggle = Tab:CreateToggle({
    if Value then
      local player = Players.LocalPlayer
     local Survivors = workspace:WaitForChild("Players"):WaitForChild("Survivors"):GetChildren()
-    local Killers = workspace:WaitForChild("Players"):WaitForChild("Killers"):GetChildren()
+    
 	for _, Survivor in pairs(Survivors) do
    
         local espbox = Instance.new("Highlight")
@@ -105,6 +105,7 @@ local Toggle = Tab:CreateToggle({
     end
       
    end
+   local Killers = workspace:WaitForChild("Players"):WaitForChild("Killers"):GetChildren()
    for _, Killer in pairs(Killers) do
     
         local espbox = Instance.new("Highlight")
