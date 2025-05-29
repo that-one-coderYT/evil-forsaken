@@ -80,7 +80,7 @@ local Toggle = Tab:CreateToggle({
     local Survivors = workspace:WaitForChild("Players"):WaitForChild("Survivors"):GetChildren()
     local Killers = workspace:WaitForChild("Players"):WaitForChild("Killers"):GetChildren()
 	for _, Survivor in pairs(Survivors) do
-    if not Survivor:GetAttribute("Username") == player.Name then
+   
         local espbox = Instance.new("Highlight")
         espbox.Name = "ESP " .. Survivor.Name
         espbox.Parent = Survivor
@@ -106,7 +106,7 @@ local Toggle = Tab:CreateToggle({
       
    end
    for _, Killer in pairs(Killers) do
-    if not Killer:GetAttribute("Username") == player.Name then
+    
         local espbox = Instance.new("Highlight")
         espbox.Name = "ESP " .. Killer.Name
         espbox.Parent = Killer
@@ -128,10 +128,10 @@ local Toggle = Tab:CreateToggle({
         TextLabel.TextScaled = true
         TextLabel.BackgroundTransparency = 1
         TextLabel.Text = Killer.Name
-    end
+
       
-   end
-else
+
+if Value == false then
     local player = Players.LocalPlayer
     local Survivors = workspace:WaitForChild("Players"):WaitForChild("Survivors"):GetChildren()
      local Killers = workspace:WaitForChild("Players"):WaitForChild("Killers"):GetChildren()
@@ -154,4 +154,5 @@ else
     end
    end
    end
+end
 })
