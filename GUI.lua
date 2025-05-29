@@ -69,3 +69,89 @@ local Slider = Tab:CreateSlider({
 
 
 local Tab = Window:CreateTab("Visual", 4483362458) -- Title, Image
+
+local Toggle = Tab:CreateToggle({
+   Name = "ESP",
+   CurrentValue = false,
+   Flag = "Toggle1", 
+   Callback = function(Value)
+   if Value then
+     local player = Players.LocalPlayer
+    local Survivors = workspace:WaitForChild("Players"):WaitForChild("Survivors"):GetChildren()
+    local Killers = workspace:WaitForChild("Players"):WaitForChild("Killers"):GetChildren()
+	for _, Survivor in pairs(Survivors) do
+    if Survivor:GetAttribute("Username") == player.Name then
+        local espbox = Instance.new("Highlight")
+        espbox.Name = "ESP " .. Survivor.Name
+        espbox.Parent = Survivor
+        espbox.FillColor = Color3.fromRGB(0, 255, 0)
+        espbox.OutlineTransparency = 1
+
+        local BillboardGui = Instance.new("BillboardGui")
+         BillboardGui.Parent = Survivor
+        BillboardGui.Name = "BillboardGui"
+        BillboardGui.AlwaysOnTop = true
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.ExtentsOffset = Vector3.new(0, 1, 0)
+
+        local TextLabel = Instance.new("TextLabel")
+         TextLabel.Parent = BillboardGui
+        TextLabel.Name = "TextLabel"
+        TextLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        TextLabel.Size = UDim2.new(0, 200, 0, 50)
+        TextLabel.TextScaled = true
+        TextLabel.BackgroundTransparency = 1
+        TextLabel.Text = Survivor.Name
+    end
+      
+   end
+   for _, Killer in pairs(Killers) do
+    if Killer:GetAttribute("Username") == player.Name then
+        local espbox = Instance.new("Highlight")
+        espbox.Name = "ESP " .. Killer.Name
+        espbox.Parent = Killer
+        espbox.FillColor = Color3.fromRGB(255, 0, 0)
+        espbox.OutlineTransparency = 1
+
+        local BillboardGui = Instance.new("BillboardGui")
+         BillboardGui.Parent = Killer
+        BillboardGui.Name = "BillboardGui"
+        BillboardGui.AlwaysOnTop = true
+        BillboardGui.Size = UDim2.new(0, 200, 0, 50)
+        BillboardGui.ExtentsOffset = Vector3.new(0, 1, 0)
+
+        local TextLabel = Instance.new("TextLabel")
+         TextLabel.Parent = BillboardGui
+        TextLabel.Name = "TextLabel"
+        TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        TextLabel.Size = UDim2.new(0, 200, 0, 50)
+        TextLabel.TextScaled = true
+        TextLabel.BackgroundTransparency = 1
+        TextLabel.Text = Killer.Name
+    end
+      
+   end
+else
+    local player = Players.LocalPlayer
+    local Survivors = workspace:WaitForChild("Players"):WaitForChild("Survivors"):GetChildren()
+     local Killers = workspace:WaitForChild("Players"):WaitForChild("Killers"):GetChildren()
+    for _, Survivor in pairs(Survivors) do
+        if Survivor:FindFirstChild("ESP " .. Survivor.Name) then
+            Survivor:FindFirstChild("ESP " .. Survivor.Name):Destroy()
+        end
+        if Survivor:FindFirstChild("BillboardGui") then
+            Survivor:FindFirstChild("BillboardGui"):Destroy()
+        end
+    end
+
+     for _, Killer in pairs(Killers) do
+        if Killer:FindFirstChild("ESP " .. Killer.Name) then
+            Killer:FindFirstChild("ESP " .. Killer.Name):Destroy()
+        end
+        if Killer:FindFirstChild("BillboardGui") then
+            Killer:FindFirstChild("BillboardGui"):Destroy()
+        end
+    end
+   end
+   end
+})
